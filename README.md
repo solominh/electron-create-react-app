@@ -1,14 +1,14 @@
 ### START
-git clone https://github.com/solominh/electron-create-react-app.git app-name
-cd app-name
+`git clone https://github.com/solominh/electron-create-react-app.git app-name` <br>
+`cd app-name`
 
-In my experience, we should start React and Electron process in 2 terminals
-1. First terminal: yarn react-start
-2. Second terminal: yarn electron-start
+In my experience, we should start React process and Electron process in 2 terminals
+1. First terminal: `yarn react-start`
+2. Second terminal: `yarn electron-start`
 
 
 ### PACKAGE
-yarn package:win
+`yarn package:win`
 
 1. With --no-prune => will work 100%
 2. Without --no-prune => module not found everywhere => be careful
