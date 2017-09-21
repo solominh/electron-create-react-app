@@ -3,6 +3,8 @@
   "main": "app-build/index.js",
   "homepage": "./",
   "version": "0.1.0",
+  "description": "A electron + create-react-app boilerplate",
+  "author":"name",
   "private": true,
   "scripts": {
     "create-icon": "electron-icon-maker --input=./assets/original-app-icon.png --output=./assets",
@@ -18,7 +20,8 @@
     "package": "npm-run-all package:*",
     "package:mac": "electron-packager . --overwrite --platform=darwin --arch=x64  --out=dist --icon=assets/icons/mac/icon.icns",
     "package:win": "electron-packager . --overwrite  --platform=win32 --arch=x64  --out=dist --icon=assets/icons/win/icon.ico",
-    "package:linux": "electron-packager . --overwrite --platform=linux --arch=x64 --out=dist"
+    "package:linux": "electron-packager . --overwrite --platform=linux --arch=x64 --out=dist",
+    "dist:win": "build --win"
   },
   "dependencies": {
     "electron-context-menu": "^0.9.1",
@@ -27,16 +30,47 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-class-properties":"^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-latest": "^6.24.1",
     "cross-env": "^5.0.5",
     "electron": "^1.7.6",
+    "electron-builder": "^19.27.7",
     "electron-devtools-installer": "^2.2.0",
     "electron-icon-maker-fix": "^0.0.5",
     "electron-packager": "^9.1.0",
     "react-scripts": "1.0.13",
     "rimraf": "^2.6.2"
+  },
+  "build": {
+    "appId": "com.website.name",
+    "asar": false,
+    "compression": "store",
+    "mac": {
+      "category": "your.app.category.type"
+    },
+    "win":{
+      "target":[
+        {
+          "target":"nsis",
+          "arch":["x64"]
+        }
+      ],
+      "icon":"assets/icons/win/icon.ico"
+    },
+    "files": [
+      "build/**/*",
+      "!app/**/*",
+      "app-build/**/*",
+      "assets/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output":"dist"
+    },
+    "publish": {
+      "provider": "github"
+    }
   }
 }
