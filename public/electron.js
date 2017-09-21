@@ -1,1 +1,1 @@
-require("../app-build/index")
+require("../app-build")
